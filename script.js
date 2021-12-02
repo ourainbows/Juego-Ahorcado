@@ -1,6 +1,5 @@
-let palabras = ["caballero", "juego", "pescado", "morado", "camion", "genial", "sombrilla", "abandono", "esternocleidomastoideo", "ahorcado", "hogar", "traicion", "arbol", "otorrinoringolo", "salchipapas", "cundicoders", "javascript", "guitarra", "react", "programate"]
+let palabras = ["caballero", "juego", "pescado", "morado", "camion", "genial", "sombrilla", "abandono", "carpinteria", "ahorcado", "hogar", "traicion", "arbol", "salchipapas", "cundicoders", "javascript", "guitarra", "react", "programate", "elefante"]
 let palabraAdivinar = escogerPalabra()
-let palabraOculta = [] 
 let contador = 6
 
 function escogerPalabra() {
@@ -16,10 +15,9 @@ function pintarGuiones() {
 }
 pintarGuiones()
 function validarIntento(){
-    let inputUsuario = document.getElementById("letraUsuario").value
+    let inputUsuario = document.getElementById("letraUsuario").value.toLowerCase()
     // Obtenemos el valor que hay en el parrafo, en este caso los guiones
-    parrafo = document.getElementById("guiones").textContent
-    
+    let parrafo = document.getElementById("guiones").textContent   
     let opParrafo = ""
     if (palabraAdivinar.includes(inputUsuario)) {
         for (i = 0; i < palabraAdivinar.length; i++){
@@ -37,7 +35,10 @@ function validarIntento(){
         document.getElementById("numVidas").innerHTML=contador
         imgAhorcado(contador)
         if (contador == 0) {
-            document.getElementById("resultado").innerHTML="Perdiste"
+            document.getElementById("resultado").innerHTML="Ahorcado"
+        }
+        if (contador == -1) {
+            reiniciarJuego()
         }
     }
     if (opParrafo == palabraAdivinar){
@@ -63,5 +64,22 @@ function imgAhorcado(numeroDeIntentos) {
     }
     else{
         document.getElementById('ahorcado-img').src = "img/ahorcado_0.png"
+    }
+}
+function reiniciarJuego() {
+    contador = 6
+    document.getElementById('ahorcado-img').src = "img/ahorcado_6.png"
+    document.getElementById("resultado").innerHTML=""
+    document.getElementById("guiones").innerHTML=""
+    document.getElementById("numVidas").innerHTML=contador
+    palabraAdivinar = escogerPalabra()
+    pintarGuiones()
+}
+
+function enterTeclado(evento) {
+    let codigoLetra = event.keyCode
+    console.log(codigoLetra)
+    if (codigoLetra == 13) {
+        validarIntento()
     }
 }

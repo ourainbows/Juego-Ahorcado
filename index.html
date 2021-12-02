@@ -6,33 +6,37 @@
         <meta name="robots" content="index,follow"/>
         <title>Juegos para el hogar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    </head>
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/logoMarca.png" type="image/png">   
+     </head>
     <body>
-        <header>
-            <div>
-                <!-- <img src="imagenfondodetitulo"> -->
-            </div>
-            <div class="Títulojuegosparaelhogar">
-                <h1>Juegos para el hogar</h1>
-            </div>
+        <header>               
+                <h1 id="Titulojuegosparaelhogar">Juegos para el hogar</h1>
+                <img src="img/retorno.png" alt="" class="boton_retorno" onclick="reiniciarJuego()">
         </header>
-        <main class="contenedor">
-            <div>
-                <img id="ahorcado-img" src="img/ahorcado_6.png" alt="ahorcado" style="width: 300px; height: 200px;">
-                <p id="guiones"><p>
-                <input id="letraUsuario" type="text"  maxlength="1">
-                <button id="confirmar" onclick="validarIntento()"> Confirmar 
-                </button>
-            </div>
-            <div>
-                <p>Vidas: </p>
-                <p id="numVidas">6</p>
-                <h3 id="resultado"></h3>
-            </div>
+        <main>
+                <div class="cuerpo">
+                    <h2 id="resultado" class="txt_ahorcado"></h2>
+                    <img class="img_ahorcado" id="ahorcado-img" src="img/ahorcado_6.png" alt="ahorcado">
+                </div>
+                <div class="teclado">
+                    <div class="flex-guiones">
+                        <p id="guiones"><p>
+                    </div>
+                        <h3 class="intentos">Intentos restantes:</h3>
+                        <p id="numVidas">6</p>
+                        <h3>Escribe una letra:</h3>
+                        <input id="letraUsuario" type="text"  maxlength="1" onkeydown="enterTeclado(event)">
+                        <button id="confirmar" onclick="validarIntento()"> Confirmar 
+                        </button>
+                </div>
         </main>
+        <footer class="logo">
+            <img class="marcaLogo" src="img\logoMarca.png" alt="">
+        </footer>
         <script src="script.js"></script>
     </body>
 </html>
